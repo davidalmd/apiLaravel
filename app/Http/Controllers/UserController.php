@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\InvoiceResource;
-use App\Models\Invoice;
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class InvoiceController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return InvoiceResource::collection(Invoice::with('user')->get());
+        return UserResource::collection(User::all());
     }
 
     /**
@@ -37,7 +37,7 @@ class InvoiceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return new UserResource(User::where('id', $id)->first());
     }
 
     /**
