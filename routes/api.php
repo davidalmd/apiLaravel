@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TesteController;
 use App\Http\Controllers\InvoiceController;
 
 /*
@@ -28,3 +30,8 @@ Route::apiResource('invoices', InvoiceController::class);
 // Route::post('/invoices', [InvoiceController::class, 'store']);
 // Route::put('/invoices/{invoice}', [InvoiceController::class, 'update']);
 // Route::delete('/invoices/{invoice}', [InvoiceController::class, 'destroy']);
+Route::post('/login', [AuthController::class, 'login']);
+// Route::get('/teste', [TesteController::class, 'index'])->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function (){
+    Route::get('/teste', [TesteController::class, 'index']);
+});
