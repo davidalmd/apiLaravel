@@ -24,6 +24,7 @@ use App\Http\Controllers\InvoiceController;
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{user}', [UserController::class, 'show']);
+Route::post('/users', [UserController::class, 'store']);
 Route::apiResource('invoices', InvoiceController::class);
 // Route::get('/invoices', [InvoiceController::class, 'index']);
 // Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
